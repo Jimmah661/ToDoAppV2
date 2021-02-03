@@ -12,14 +12,11 @@ container.addEventListener("dragover", (e) => {
 
 
 // This is where we'll be updating the information regarding the location in the list.
-// TODO - This is not working with the Firestore information so I'll need to figure a way to fix that
 container.addEventListener("dragend", (e) => {
   var newIndex = [...container.querySelectorAll(".todo")]
   newIndex.forEach((item, index) => {
     database.collection("todo").doc(item.id).update({"position": index})
   })
-  // var oldIndex = data.findIndex((element) => element.id === JSON.parse(e.target.id))
-  // data.splice(newIndex, 0, data.splice(oldIndex, 1)[0])
 })
 
 function getDragAfterElement(y) {
